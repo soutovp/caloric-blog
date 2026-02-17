@@ -1,0 +1,36 @@
+@use '../../styles/variables.scss' as v;
+
+.card {
+	border: 1px solid #ddd;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 8px;
+	transition: transform 0.2s;
+	background-color: white;
+
+	&:hover {
+		// O '&' referencia o pai (.card)
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.title {
+	font-size: 1.5rem;
+	color: v.$text-dark;
+	margin: 0 0 0.5rem 0;
+
+	a {
+		text-decoration: none;
+		color: inherit;
+
+		&:hover {
+			color: v.$primary-color; // Azul destaque
+		}
+	}
+}
+
+.content {
+	color: #666;
+	line-height: 1.5;
+}
