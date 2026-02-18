@@ -1,3 +1,7 @@
+*::selection {
+	background-color: #1f2937;
+	color: #f3f4f6;
+}
 h1,
 h2,
 h3,
@@ -17,14 +21,268 @@ body {
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-weight: 400;
+	font-size: 62.5%;
 }
-nav.menu {
+header.menu {
 	display: flex;
-	width: 100%;
 	position: sticky;
 	top: 0;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #f5f5f7;
+	background-color: #ffffff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	padding: 1em;
+}
+.hamburger-container {
+	--width-menu: 20px;
+	--height-menu: 4px;
+	width: var(--width-menu);
+	padding: 5px;
+	height: calc(var(--height-menu) * (3 + 2));
+	cursor: pointer;
+	z-index: 3;
+}
+.hamburger-menu {
+	--menu-color: #000000;
+	background-color: var(--menu-color);
+	width: var(--width-menu);
+	height: var(--height-menu);
+	border-radius: calc(var(--height-menu) / 2);
+	position: relative;
+	display: block;
+}
+.hamburger-menu::before {
+	content: '';
+	position: absolute;
+	top: calc(var(--height-menu) * 2);
+	width: var(--width-menu);
+	height: var(--height-menu);
+	border-radius: calc(var(--height-menu) / 2);
+	background-color: var(--menu-color);
+}
+.hamburger-menu::after {
+	content: '';
+	position: absolute;
+	top: calc(var(--height-menu) * 4);
+	width: var(--width-menu);
+	height: var(--height-menu);
+	border-radius: calc(var(--height-menu) / 2);
+	background-color: var(--menu-color);
+}
+#logo {
+	font-size: 2.4em;
+	font-family: 'Merriweather', serif;
+	font-weight: 800;
+	z-index: 1;
+	text-decoration: none;
+	color: black;
+}
+.lupa {
+	--lupa-color: black;
+	height: 2em;
+	width: 2em;
+	position: relative;
+}
+.lupa::before {
+	content: '';
+	width: 1em;
+	height: 1em;
+	border: 2px solid var(--lupa-color);
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.lupa::after {
+	content: '';
+	width: 0.8em;
+	height: 2px;
+	transform: rotate(45deg);
+	background-color: var(--lupa-color);
+	position: absolute;
+	bottom: 0.4em;
+	right: 0.2em;
+}
+#open-menu {
+	display: none;
+}
+.menu-left {
+	position: fixed;
+	top: 0;
+	left: -100%;
+	width: 70%;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	gap: 0;
+	transition: ease-in-out 0.2s;
+}
+#open-menu:checked ~ .menu-left {
+	left: 0;
+}
+#open-menu:checked + .inner-label-close-menu {
+	display: block;
+}
+.left-side {
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff;
+	z-index: 2;
+}
+.inner-label-close-menu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: 0s;
+}
+.left-side {
+	padding: 6em 0 0 1.5em;
+}
+.left-side h3 {
+	font-size: 1.8em;
+	margin-bottom: 1em;
+}
+.left-side nav ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+.left-side nav ul li a {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	font-size: 1.6em;
+	text-decoration: none;
+	color: #000000;
+}
+.circle {
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+}
+.nutrition {
+	background-color: #5edf6f;
+}
+.training {
+	background-color: #305cde;
+}
+.healthy {
+	background-color: #b14ac5;
+}
+.recipes {
+	background-color: #f57931;
+}
+.desktop {
+	display: none;
+}
+@media screen and (min-width: 1000px) {
+	.mobile {
+		display: none;
+	}
+	.desktop {
+		display: block;
+	}
+	.menu-desktop nav ul {
+		display: flex;
+		flex-direction: row;
+		gap: 1em;
+	}
+	.menu-desktop nav ul li {
+		--border-size: 2px;
+		display: flex;
+		flex-direction: row;
+		gap: 1em;
+		padding: 1em 0;
+		transition: 0.2s;
+		position: relative;
+	}
+	.menu-desktop nav ul li a {
+		text-decoration: none;
+		color: black;
+		font-size: 1.6em;
+		transition: 0.2s;
+	}
+	.search.desktop {
+		display: flex;
+		flex-direction: row;
+		gap: 1em;
+		position: absolute;
+		right: 1em;
+		transform: translateY(-50%);
+	}
+	.search.desktop > div {
+		display: flex;
+		flex-direction: row;
+		gap: 1em;
+		border: 1px solid transparent;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5em 1em;
+		border-radius: 2em;
+		background-color: #dddddd;
+	}
+	.search.desktop > div > .lupa {
+		--lupa-color: #a7aaaf;
+		cursor: pointer;
+	}
+	.search.desktop input[type='text'] {
+		border: none;
+		outline: none;
+		background-color: #dddddd;
+		color: #6b7280;
+	}
+	.search.desktop button {
+		background-color: #ffffff;
+		border: 1px solid black;
+		border-radius: 2em;
+		padding: 0 1em;
+		cursor: pointer;
+		transition: 0.2s;
+	}
+	.search.desktop button:hover {
+		background-color: #1f2937;
+		color: #dddddd;
+	}
+	.nutrition {
+		background-color: transparent;
+		border-bottom: var(--border-size) solid #5edf6f;
+	}
+	.nutrition:hover a {
+		color: #5edf6f;
+	}
+	.training {
+		background-color: transparent;
+		border-bottom: var(--border-size) solid #305cde;
+	}
+	.training:hover a {
+		color: #305cde;
+	}
+	.healthy {
+		background-color: transparent;
+		border-bottom: var(--border-size) solid #b14ac5;
+	}
+	.healthy:hover a {
+		color: #b14ac5;
+	}
+	.recipes {
+		background-color: transparent;
+		border-bottom: var(--border-size) solid #f57931;
+	}
+	.recipes:hover a {
+		color: #f57931;
+	}
+	.menu > div:nth-of-type(1),
+	.menu > div:nth-of-type(3) {
+		position: relative;
+	}
+	#logo {
+		position: absolute;
+		transform: translateY(-50%);
+	}
 }

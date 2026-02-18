@@ -1,3 +1,4 @@
+import './styles/reset.css';
 import './styles/global.css';
 
 import router from './router';

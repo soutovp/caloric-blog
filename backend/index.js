@@ -35,6 +35,26 @@ const postsDB = [
 	},
 ];
 
+const home = {
+	HeroSection: [
+		{
+			title: 'Como melhorar performance',
+			summary: 'Aprenda a importancia de prestar atenção nestas dicas para melhorar o desempenho de sua performance.',
+			href: '#',
+			imageUrl: 'https://www.lucianapepino.com.br/_next/image/?url=https%3A%2F%2Fadmin.lucianapepino.com.br%2Fwp-content%2Fuploads%2FiStock-1360395151.jpg&w=3840&q=75',
+			category: {
+				slug: 'training',
+				name: 'Treino',
+			},
+		},
+	],
+	seo: {
+		title: 'Início',
+		description: 'Bem-vindo ao blog sobre o mundo da saúde física!',
+	},
+	general_posts: postsDB,
+};
+
 //Rota 1: Listar todos os posts ( para a Home )
 app.get('/api/posts', (req, res) => {
 	//Aqui entraria: SELECT slug, title, summary FROM posts
@@ -52,6 +72,13 @@ app.get('/api/posts/:slug', (req, res) => {
 		res.json(post);
 	} else {
 		res.status(404).json({ error: 'Post não encontrado' });
+	}
+});
+app.get('/api/home', (req, res) => {
+	if (home) {
+		res.json(home);
+	} else {
+		res.status(404).json({ error: 'Site está em Manutenção.' });
 	}
 });
 
