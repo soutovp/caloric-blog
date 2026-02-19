@@ -9,7 +9,7 @@ const postsDB = [
 	{
 		slug: 'meu-primeiro-post',
 		title: 'Node.js como CMS',
-		content: '# Olá Mundo!\nEste conteúdo veio do **Banco de Dados** via API.',
+		content: '## Olá Mundo!\nEste conteúdo veio do **Banco de Dados** via API.',
 		author: 'Fernando',
 		date: '2026-02-16',
 		summary: 'summary',

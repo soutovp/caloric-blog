@@ -1,10 +1,10 @@
 import { marked } from 'marked'; //Conversor que roda no browser
 import { updateSEO } from '../../utils/seo';
-import './style.css';
+import styles from './style.module.scss';
 
 export async function PostPage(slug) {
 	const container = document.createElement('div');
-	container.className = 'blog-post-loading';
+	container.className = styles.blogPostLoading;
 	container.innerHTML = '<p>Carregando conteúdo...</p>';
 
 	try {
@@ -21,7 +21,7 @@ export async function PostPage(slug) {
 		const htmlContent = marked.parse(postData.content);
 
 		//3. Atualizar o DOM
-		container.className = 'blog-post';
+		container.className = styles.blogPostContainer;
 		container.innerHTML = `
             <h1>${postData.title}</h1>
             <div class="meta">Por ${postData.author} em ${postData.date}</div>
@@ -31,6 +31,19 @@ export async function PostPage(slug) {
 
 		//Atualizar título da página ( SEO Client-side )
 		document.title = `${postData.title} | Caloric`;
+
+		console.log('🚀 Aplicação iniciada com sucesso!');
+		const links = container.querySelectorAll('a');
+		console.log(links);
+		links.forEach((link) => {
+			link.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				window.history.pushState({}, '', link.getAttribute('href'));
+				const navEvent = new PopStateEvent('popstate');
+				window.dispatchEvent(navEvent);
+			});
+		});
 	} catch (error) {
 		container.innerHTML = `<h2>Erro: ${error.message}</h2><a href="/">Voltar</a>`;
 		updateSEO({ title: 'Error - Post não encontrado', description: '' });

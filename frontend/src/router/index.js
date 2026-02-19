@@ -4,12 +4,36 @@ import { PostPage } from '../pages/Post';
 const ConstructionPage = () => {
 	const div = document.createElement('div');
 	div.innerHTML = `<h1>🚧 Página em Construção</h1><a href="/">Voltar para Home</a>`;
+
+	const links = div.querySelectorAll('a');
+	links.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			window.history.pushState({}, '', link.getAttribute('href'));
+			const navEvent = new PopStateEvent('popstate');
+			window.dispatchEvent(navEvent);
+		});
+	});
+
 	return div;
 };
 
 const NotFoundPage = () => {
 	const div = document.createElement('div');
 	div.innerHTML = `<h1>404 - Página não encontrada</h1><a href="/">Voltar</a>`;
+
+	const links = div.querySelectorAll('a');
+	links.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			window.history.pushState({}, '', link.getAttribute('href'));
+			const navEvent = new PopStateEvent('popstate');
+			window.dispatchEvent(navEvent);
+		});
+	});
+
 	return div;
 };
 

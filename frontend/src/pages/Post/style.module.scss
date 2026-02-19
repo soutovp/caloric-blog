@@ -1,0 +1,32 @@
+.blogPostContainer {
+	display: block;
+	max-width: 1000px;
+	margin: 5em auto;
+	& div[class='meta'] {
+		font-size: 1.2em;
+		margin-top: 0.5em;
+	}
+	& strong {
+		font-weight: 600;
+	}
+	& h1 {
+		font-size: 2.4em;
+	}
+	& h2 {
+		font-size: 1.8em;
+		margin: 0.5em 0;
+	}
+	& p {
+		font-size: 1.4em;
+		padding: 0.5em 0;
+	}
+	& a {
+		font-size: 1.4em;
+	}
+	& div[class='content'] {
+		margin: 3em 0;
+	}
+}
+.blogPostLoading {
+	font-size: 2em;
+}

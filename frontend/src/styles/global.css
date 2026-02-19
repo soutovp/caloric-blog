@@ -138,7 +138,6 @@ header.menu {
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
-	transition: 0s;
 }
 .left-side {
 	padding: 6em 0 0 1.5em;
@@ -199,7 +198,6 @@ header.menu {
 		flex-direction: row;
 		gap: 1em;
 		padding: 1em 0;
-		transition: 0.2s;
 		position: relative;
 	}
 	.menu-desktop nav ul li a {
